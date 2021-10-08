@@ -6,6 +6,7 @@ export const initialState = {
 }
 
 const reducer = (state = initialState, action)=>{
+// Start Case
     switch (action.type) {
         case FETCH_START:
             return {
@@ -14,6 +15,7 @@ const reducer = (state = initialState, action)=>{
                 isLoading: true,
                 error:''
             }
+// Success Case
         case FETCH_SUCCESS:
             return {
                 ...state,
@@ -21,6 +23,7 @@ const reducer = (state = initialState, action)=>{
                 isLoading: false,
                 error: ''
             }
+// Fail Case
         case FETCH_FAIL:
             return {
                 ...state,
@@ -28,6 +31,7 @@ const reducer = (state = initialState, action)=>{
                 isLoading: false,
                 error: action.payload
             }
+// Smurf Add Case
         case FETCH_ADD:
             return {
                 smurf:[...state, action.payload],
