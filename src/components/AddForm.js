@@ -24,7 +24,7 @@ const AddForm = (props) => {
         e.preventDefault();
 
         if (state.name === "" || state.position === "" || state.nickname === "") {
-            props.fetchError('Fill out the Form')
+            props.fetchError('Fill out the Form name')
             //add in error action
             return
         }
