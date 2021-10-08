@@ -1,27 +1,29 @@
 import axios from 'axios';
 
 //Case Exports
-export const FETCH_START = 'FETCH_START';
+export const FETCH_SMURFS = 'FETCH_SMURFS';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAIL = 'FETCH_FAIL';
 export const FETCH_ADD = 'FETCH_ADD';
+export const FETCH_ERROR = 'FETCH_ERROR';
 
 // Dispatch Axios call
-export const fetchSmurfs = () => dispatch => {
+export const call = () => dispatch => {
     dispatch(fetchSmurfs());
-    axios.get('')
+    axios.get('http://localhost:3333/smurfs')
     .then(resp => {
-        dispatch(fetchSmurfs(resp.data));
+        dispatch(fetchSuccess(resp.data));
+        console.log('THIS IS DATA', resp.data)
     })
     .catch(err => {
-        dispatch(error(err));
+        dispatch(fetchFail(err));
     })
 }
 
 //Actions below
 
-export const fetchStart = (smurf)=> {
-    return ({type: FETCH_START , payload:smurf})
+export const fetchSmurfs = ()=> {
+    return ({type: FETCH_SMURFS})
 }
 
 export const fetchSuccess = (smurf)=> {
@@ -34,6 +36,10 @@ export const fetchFail = (error)=> {
 
 export const fetchAdd = (smurf)=> {
     return ({type:FETCH_ADD, payload:smurf});
+}
+
+export const fetchError = (error)=> {
+    return ({type: FETCH_ERROR, payload:error})
 }
 
 //Task List:

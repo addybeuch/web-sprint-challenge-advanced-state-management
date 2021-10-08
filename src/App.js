@@ -7,10 +7,15 @@ import Header from './components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import { connect } from "react-redux";
+import { call } from "./actions";
 
 
 
 class App extends Component {
+  componentDidMount=() => {
+    this.props.call()
+  }
+
   render() {
     return (
       <div className="App">
@@ -25,9 +30,9 @@ class App extends Component {
   }
 }
 
-export default App;
 
-export default connect(mapToStateProps, (addSmurf))(App)
+
+export default connect(null, {call})(App)
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.
